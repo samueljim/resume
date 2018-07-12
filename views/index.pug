@@ -1,0 +1,298 @@
+
+doctype html
+//if IE 8 
+//if IE 9 
+// <![endif]
+head
+    block meta
+        // meta
+        meta(charset='utf-8')
+        title Samuel Henry
+        meta(name='description', content='Technical Cofounder at International Alumni Job Network (IAJN)')
+        meta(name='author', content='Samuel Henry')
+        meta(property='og:image', content='images/3.jpg')
+        meta(property='og:url', content='https://samueljim.com')
+        meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+    block css
+        // CSS
+        link(rel='stylesheet', href='css/base.css')
+        link(rel='stylesheet', href='css/main.css')
+        link(rel='stylesheet', href='css/vendor.css')
+    block prescripts    
+        // script
+        script(src='js/modernizr.js')
+        script(src='js/pace.min.js')
+    //  favicons
+    link(rel='icon', type='image/png', href='favicon.png')
+    // header
+block top
+    header
+        .row
+            .top-bar
+                a.menu-toggle(href='#')
+                    span Menu
+                .logo
+                    a(href='index.html') Samuel
+                nav#main-nav-wrap
+                    ul.main-navigation
+                        li.current
+                            a.smoothscroll(href='#intro', title='') Home
+                        li
+                            a.smoothscroll(href='#about', title='') About
+                        li
+                            a.smoothscroll(href='#resume', title='') Resume
+                        li
+                            a.smoothscroll(href='#contact', title='') Contact
+block content
+    section#intro
+        .intro-overlay
+        .intro-content
+            .row
+                .col-twelve
+                    h5 Hello, World.
+                    h1 I&apos;m Samuel Henry.
+                    p.intro-position
+                        span Javascript Developer
+                        span CTO of IAJN
+                    a.button.stroke.smoothscroll(href='#about', title='') More About Me
+        ul.intro-social
+            li
+                a(href='https://github.com/samueljim')
+                    i.fa.fa-github
+            li
+                a(href='https://www.facebook.com/theSamueljim')
+                    i.fa.fa-facebook
+            li
+                a(href='https://www.linkedin.com/in/samuel-j-henry/')
+                    i.fa.fa-linkedin
+            li
+                a(href='https://www.instagram.com/thesamueljim/')
+                    i.fa.fa-instagram
+            li
+                a(href='https://ia-jn.com/account/rJOJNWTxX/samuel-james-henry')
+                    img(src='images/smallwhite.svg', width='28px;')
+    section#about
+        .row.section-intro
+            .col-twelve
+                h5 About
+                h1 Let me introduce myself.
+                .intro-info
+                    img(src='images/profile-pic.jpg', alt='Profile Picture')
+                    p.lead Technical Cofounder at International Alumni Job Network (IAJN).
+        //section-intro
+        .row.about-content
+            .col-six.tab-full
+                h3 Profile
+                p text
+                ul.info-list
+                    li
+                        strong Fullname:
+                        span Samuel James Henry
+                    li
+                        strong Birth Date:
+                        span March 5, 1996
+                    li
+                        strong Job:
+                        span Technical Co-founder IA-JN
+                    li
+                        strong Website:
+                        span samueljim.com
+                    li
+                        strong Email:
+                        a(href='mailto:me@samueljim.com?Subject=Job inquiry', target='_top')
+                            span me@samueljim.com
+                //info-list
+            .col-six.tab-full
+                h3 Skills
+                p text
+                img(src='images/4.png', alt='a cute photo of me')
+                //skill-bars
+        .row.button-section
+            .col-twelve
+                a.button.stroke.smoothscroll(href='#contact', title='Hire Me') Hire Me
+                a.button.button-primary(href='Samuel Henry 2018.pdf', title='Download CV', download='') Download CV
+    // resume 
+    section#resume.grey-section
+        .row.section-intro
+            .col-twelve
+                h5 Resume
+                h1 More of my credentials.
+                p.lead
+        //section-intro
+        .row.resume-timeline
+            .col-twelve.resume-header
+                h2 Work Experience
+            //resume-header
+            .col-twelve
+                .timeline-wrap
+                    .timeline-block
+                        .timeline-ico
+                            i.fa.fa-graduation-cap
+                        .timeline-header
+                            h3 Technical CO Founder
+                            p November 2017 - Present
+                        .timeline-content
+                            h4 INTERNATIONAL ALUMNI JOB NETWORK  
+                            p text
+                    //timeline-block
+                    .timeline-block
+                        .timeline-ico
+                            i.fa.fa-graduation-cap
+                        .timeline-header
+                            h3 Front-end Developer
+                            p July 2014 - June 2015
+                        .timeline-content
+                            h4 Super Cool Agency
+                            p
+                    //timeline-block
+                    .timeline-block
+                        .timeline-ico
+                            i.fa.fa-graduation-cap
+                        .timeline-header
+                            h3 Web Designer
+                            p May 2013 - June 2014
+                        .timeline-content
+                            h4 Great Designs Studio
+                            p
+                    //timeline-block
+                //timeline-wrap
+            //col-twelve
+        //resume-timeline
+        .row.resume-timeline
+            .col-twelve.resume-header
+                h2 Education
+            //resume-header
+            .col-twelve
+                .timeline-wrap
+                    .timeline-block
+                        .timeline-ico
+                            i.fa.fa-briefcase
+                        .timeline-header
+                            h3 Master Degree
+                            p July 2015 - Present
+                        .timeline-content
+                            h4 University of Life
+                            p
+                    //timeline-block
+                    .timeline-block
+                        .timeline-ico
+                            i.fa.fa-briefcase
+                        .timeline-header
+                            h3 Bachelor Degree
+                            p July 2014 - June 2015
+                        .timeline-content
+                            h4 State Design University
+                            p
+                    //timeline-block
+                    .timeline-block
+                        .timeline-ico
+                            i.fa.fa-briefcase
+                        .timeline-header
+                            h3 Bachelor Degree
+                            p May 2013 - June 2014
+                        .timeline-content
+                            h4 Design College
+                            p
+    block form                        
+        section#contact
+            .row.section-intro
+                .col-twelve
+                    h5 Contact
+                    h1 I&apos;d Love To Hear From You.
+                    // <p class="lead"></p>
+            //section-intro
+            .row.contact-form
+                .col-twelve
+                    // form
+                    form#contactForm(name='contactForm', method='post', action='')
+                        fieldset
+                            .form-field
+                                input#contactName(name='contactName', type='text', placeholder='Name', value='', minlength='2', required='')
+                            .form-field
+                                input#contactEmail(name='contactEmail', type='email', placeholder='Email', value='', required='')
+                            .form-field
+                                input#contactSubject(name='contactSubject', type='text', placeholder='Subject', value='')
+                            .form-field
+                                textarea#contactMessage(name='contactMessage', placeholder='message', rows='10', cols='50', required='')
+                            .form-field
+                                button.submitform Submit
+                                #submit-loader
+                                    .text-loader Sending...
+                                    .s-loader
+                                        .bounce1
+                                        .bounce2
+                                        .bounce3
+                    // contact-warning
+                    #message-warning
+                    // contact-success
+                    #message-success
+                        i.fa.fa-check
+                        br
+            // contact-form
+            .row.contact-info
+                .col-four.tab-full
+                    .icon
+                        i.icon-pin
+                    h5 Where to find me
+                    p 287 Birdwood Terrace 
+                        br 
+                        |Toowong QLD
+                        br
+                        | 4066 Australia
+                .col-four.tab-full.collapse
+                    .icon
+                        i.icon-mail
+                    h5 Email Me At
+                    p me@samueljim.com
+                        br 
+                        | sam@ia-jn.com
+                        br 
+                        | thesamueljim@gmail.com
+                .col-four.tab-full
+                    .icon
+                        i.icon-phone
+                    h5 Call Me At
+                    p 0405433639
+block footer
+    footer
+        .row
+            .col-six.tab-full.pull-right.social
+                ul.footer-social
+                    li
+                        a(href='https://github.com/samueljim')
+                            i.fa.fa-github
+                    li
+                        a(href='https://www.facebook.com/theSamueljim')
+                            i.fa.fa-facebook
+                    li
+                        a(href='https://www.linkedin.com/in/samuel-j-henry/')
+                            i.fa.fa-linkedin
+                    li
+                        a(href='https://www.instagram.com/thesamueljim/')
+                            i.fa.fa-instagram
+                    li
+                        a(href='https://ia-jn.com/account/rJOJNWTxX/samuel-james-henry')
+                            img(src='images/smallwhite.svg', width='20px;')
+            .col-six.tab-full
+                .copyright
+                    span &copy; Copyright Kards 2016.
+                    span
+                        a(href='http://www.styleshout.com/') styleshout
+            #go-top
+                a.smoothscroll(title='Back to Top', href='#top')
+                    i.fa.fa-long-arrow-up
+block end
+    #preloader
+        #loader
+    // Java Script
+    script(src='js/jquery-2.1.3.min.js')
+    script(src='js/plugins.js')
+    script(src='js/main.js')
+    // Google Analytics
+    script(async='', src='https://www.googletagmanager.com/gtag/js?id=UA-10908294-3')
+    script.
+        function gtag() {
+        dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'UA-10908294-3');
