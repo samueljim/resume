@@ -3,7 +3,7 @@ doctype html
 //if IE 8 
 //if IE 9 
 // <![endif]
-head
+head#top
     block meta
         // meta
         meta(charset='utf-8')
@@ -42,6 +42,8 @@ block top
                         li
                             a.smoothscroll(href='#resume', title='') Resume
                         li
+                            a.smoothscroll(href='#references', title='') References
+                        li
                             a.smoothscroll(href='#contact', title='') Contact
 block content
     section#intro
@@ -56,9 +58,8 @@ block content
                     h1 I&apos;m Samuel Henry.
                     p.intro-position
                         span Javascript Developer
-                        span 
-                            a(href='https://ia-jn.com') CTO of IAJN
-                    a.button.stroke.smoothscroll(href='#about', title='') More About Me
+                        span CTO of IAJN
+                    a.button.stroke.smoothscroll(href='#about', title='more') More About Me
         ul.intro-social
             li
                 a(href='https://github.com/samueljim')
@@ -73,8 +74,15 @@ block content
                 a(href='https://www.instagram.com/thesamueljim/')
                     i.fa.fa-instagram
             li
-                a(href='https://ia-jn.com/account/rJOJNWTxX/samuel-james-henry')
-                    img(src='images/smallwhite.svg', width='28px;')
+                a.st0(href='https://ia-jn.com/account/rJOJNWTxX/samuel-james-henry')
+                    svg(version='1.1', width='26px', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', x='0px', y='0px', viewbox='0 0 144.6 120', style='enable-background:new 0 0 144.6 120;', xml:space='preserve')
+                        g
+                            polygon(points='72.3,98.4 103.9,81.6 72.3,64.8 40.7,81.6 	')
+                            polygon(points='72.3,55.2 103.9,38.4 72.3,21.6 40.7,38.4 	')
+                            polygon(points='0,16.8 31.6,33.6 63.2,16.8 31.6,0 	')
+                            polygon(points='0,60 31.6,76.8 63.2,60 31.6,43.2 	')
+                            polygon(points='113,76.8 144.6,60 113,43.2 81.4,60 	')
+                            polygon(points='0,103.2 31.6,120 63.2,103.2 31.6,86.5 	')
     section#about
         .row.section-intro
             .col-twelve
@@ -97,11 +105,11 @@ block content
                         strong Birth Date:
                         span March 5, 1996
                     li
-                        strong Job:
+                        strong Company:
                         span Technical Co-founder IA-JN
                     li
-                        strong Website:
-                        span samueljim.com
+                        strong Usename:
+                        span samueljim
                     li
                         strong Email:
                         a(href='mailto:me@samueljim.com?Subject=Job inquiry', target='_top')
@@ -115,7 +123,7 @@ block content
                 //skill-bars
         .row.button-section
             .col-twelve
-                a.button.button-primary(href='Samuel Henry 2018.pdf', title='Download CV', download='') Download CV
+                a.button(href='Samuel Henry 2018.pdf', title='Download CV', download='') Download CV
                 a.button.stroke.smoothscroll(href='#contact', title='Hire Me') Hire Me
                 a.button.button-primary(href='Samuel Henry academic record.pdf', title='academic record', download='') Academic record
     // resume 
@@ -123,7 +131,7 @@ block content
         .row.section-intro
             .col-twelve
                 h5 Resume
-                h1 More of my credentials.
+                h1 My credentials.
                 p.lead
         //section-intro
         .row.resume-timeline
@@ -141,8 +149,9 @@ block content
                         .timeline-content
                             h4 
                                 a(href='https://ia-jn.com') International Alumni Job Network (ia-jn.com)
-                            p Full stack development of a global startup based in Brisbane. I built IA-JN.com’s job board and news website which contained elements such as login sessions, search functionality, progressive web application functionality and an admin Content Management System. I was reasonable for all parts of the project including management, SEO, deployment, design and testing. I was also responsible for promoting the IAJN and dealing with the requirements of more than 200 international companies. 
-                            
+                            p.mb-1 Full stack development of a global startup based in Brisbane. I built IA-JN.com’s job board and news website which contained elements such as login sessions, search functionality, progressive web application functionality and an admin Content Management System. I was reasonable for all parts of the project including management, SEO, deployment, design and testing. I was also responsible for promoting the IAJN and dealing with the requirements of more than 200 international companies. 
+                            h6
+                                a(href='https://www.qutbluebox.com.au/accelerate') QUT accelerator
                             | The start up was supported by the commercial arm of QUT, Bluebox. Working in a startup accelerator for the past year has taught me business, networking and client management skills. 
                     //timeline-block
                     .timeline-block
@@ -183,7 +192,8 @@ block content
                             h3 Bachelor Degree
                             p July 2018
                         .timeline-content
-                            h4 Information Technology (Computer Science) with a Network and Security Minor at QUT
+                            h4 
+                                a(href='https://www.qut.edu.au/study/international-courses/bachelor-of-information-technology/bachelor-of-information-technology-computer-science') Information Technology (Computer Science) with a Network and Security Minor at QUT
                             p I finished my degree with a GPA of 5.708 while being involved with many societies, working on projects for Dr Guido Zuccon and Bluebox’s startup accelerator program (commercial arm of QUT).
                     //timeline-block
                     .timeline-block
@@ -193,8 +203,28 @@ block content
                             h3 High School
                             p 2014
                         .timeline-content
-                            h4 St James Collage Spring Hill
+                            h4 
+                                a(href='http://www.stjamescollege.qld.edu.au/') St James College Spring Hill
                             p Student leader and Senior Buddy of 2014 Award.
+    section#references
+        .row.section-intro
+            .col-twelve
+                h5 References
+                h1 Want to know more about me?
+            .row    
+                .col-six
+                    a(href='https://www.linkedin.com/in/shane-dillon-48570012/')
+                        img.fixed-height(src="images/shane-dillon.jpg", alt="Shane Dillon")
+                        h4.mb-0 Shane Dillon
+                        h6 CEO of IAJN
+                        blockquote Possible quote
+                .col-six
+                    a(href='https://www.linkedin.com/in/guidozuccon/')
+                        img.fixed-height(src="images/guido-zuccon.jpg", alt="Dr Guido Zuccon")
+                        h4.mb-0 Dr Guido Zuccon
+                        h6 Research Project Supervisor
+                        blockquote Possible quote
+
     block form                        
         section#contact
             .row.section-intro
@@ -230,17 +260,42 @@ block content
                     #message-success
                         i.fa.fa-check
                         br
+            .row.text-center
+                span.i-paddding
+                    i.fa.fa-chevron-circle-up
+                span.i-paddding
+                    i.fa.fa-chevron-circle-up
+                span.i-paddding
+                    i.fa.fa-chevron-circle-down
+                span.i-paddding
+                    i.fa.fa-chevron-circle-down
+                span.i-paddding
+                    i.fa.fa-chevron-circle-left
+                span.i-paddding
+                    i.fa.fa-chevron-circle-right
+                span.i-paddding
+                    i.fa.fa-chevron-circle-left
+                span.i-paddding
+                    i.fa.fa-chevron-circle-right
+                span.i-paddding
+                    span B
+                span.i-paddding
+                    span A
             // contact-form
             .row.contact-info
                 .col-four.tab-full
-                    .icon
-                        i.icon-pin
-                    h5 Where to find me
-                    p 287 Birdwood Terrace 
-                        br 
-                        |Toowong QLD
+                    a(href='https://github.com/samueljim')
+                        .icon
+                            i.fa.fa-github-square
+                        h5 Check out my code
+                    p
+                        a.white(href='https://github.com/samueljim/proKiln') proKiln
                         br
-                        | 4066 Australia
+                        a.white(href='https://github.com/samueljim/ETAssistant') ETAassistant
+                        br
+                        a.white(href='https://github.com/samueljim/elastic-stained-glass') Elastic Serach project
+                        br
+                        a.white(href='https://github.com/samueljim/photoServer') MongoDB photoserver
                 .col-four.tab-full.collapse
                     .icon
                         i.icon-mail
@@ -273,8 +328,15 @@ block footer
                         a(href='https://www.instagram.com/thesamueljim/')
                             i.fa.fa-instagram
                     li
-                        a(href='https://ia-jn.com/account/rJOJNWTxX/samuel-james-henry')
-                            img(src='images/smallwhite.svg', width='20px;')
+                        a.st0(href='https://ia-jn.com/account/rJOJNWTxX/samuel-james-henry')
+                            svg(version='1.1', width='20px', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', x='0px', y='0px', viewbox='0 0 144.6 120', style='enable-background:new 0 0 144.6 120;', xml:space='preserve')
+                                g
+                                    polygon(points='72.3,98.4 103.9,81.6 72.3,64.8 40.7,81.6 	')
+                                    polygon(points='72.3,55.2 103.9,38.4 72.3,21.6 40.7,38.4 	')
+                                    polygon(points='0,16.8 31.6,33.6 63.2,16.8 31.6,0 	')
+                                    polygon(points='0,60 31.6,76.8 63.2,60 31.6,43.2 	')
+                                    polygon(points='113,76.8 144.6,60 113,43.2 81.4,60 	')
+                                    polygon(points='0,103.2 31.6,120 63.2,103.2 31.6,86.5 	')
             .col-six.tab-full
                 .copyright
                     span &copy; Copyright Kards 2016.

@@ -97,9 +97,16 @@ a:visited {
 
 a:hover,
 a:focus,
-a:active {
+a:active,
+a.white:hover,
+a.white:focus,
+a.white:active {
 	color: #FF0077;
 	outline: 0;
+}
+
+a.white {
+	color: #fff;
 }
 
 /** 
@@ -1726,6 +1733,7 @@ header .logo a {
 .intro-social li a:hover,
 .intro-social li a:focus {
 	color: #cc005f;
+	fill: #cc005f;
 }
 
 /**
@@ -1812,6 +1820,12 @@ header .logo a {
 	margin-bottom: 3rem;
 }
 
+#references {
+	background: #FFFFFF;
+	padding-top: 10rem;
+	padding-bottom: 1rem;
+}
+
 .intro-info {
 	margin-top: 4.2rem;
 	margin-right: -30px;
@@ -1884,12 +1898,12 @@ header .logo a {
 	width: 250px;
 }
 
-.button-section [class*="col-"] .button:first-child {
+.button-section [class*="col-"] .button {
 	margin-right: 4rem;
 }
 
 .button-section [class*="col-"] .button:last-child {
-	margin-left: 4rem;
+	margin-right: 0rem;
 }
 
 /**
@@ -3075,6 +3089,18 @@ footer .copyright span:last-child::after {
 
 .st0 {
 	fill: #fff;
+}
+
+.mb-0 {
+	margin-bottom: 0px;
+}
+
+.mb-1 {
+	margin-bottom: 10px;
+}
+
+.fixed-height {
+	max-height: 300px;
 }
 
 /*# sourceMappingURL=main.css.map */

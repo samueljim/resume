@@ -44,12 +44,12 @@ app.post("/", function (req, res) {
         from: `${req.body.contactEmail}`,
         subject: `${req.body.contactSubject} Website inquiry`,
         html: `<h3>${req.body.contactMessage}</h3><br/><br/><h2>From 
-        ${req.body.contactName} - ${req.body.contactEmail}></h2>`
+        ${req.body.contactName} - ${req.body.contactEmail}</h2>`
     };
     transporter
         .sendMail(mail)
         .then(cb => {
-            return res.status(200).send("Sent email :)");
+            return res.status(200).send("Sent email to me@samueljim.com");
         })
         .catch(err => {
             console.log(err);
