@@ -114,7 +114,8 @@ block content
                         span March 5, 1996
                     li
                         strong Company:
-                        span Technical Co-founder IA-JN
+                        span 
+                            a(href='ia-jn.com') IA-JN.com
                     li
                         strong Usename:
                         span samueljim
@@ -124,7 +125,8 @@ block content
                             span me@samueljim.com
                 //info-list
             .col-six.tab-full
-                p My main language is JavaScript and I’ve made full stack apps with the following: Express.JS, Next.js, Pug, Angular.js, React.js, Bootstrap, MongoDB/noSQL, ElasticSearch, Graph.js, nodemailer, JSON, Passport and Socket.io. Examples of these are available on my Github profile.
+                p My main language is JavaScript and I’ve made full stack apps with the following: Express.JS, Next.js, Pug, Angular.js, React.js, Bootstrap, MongoDB/noSQL, ElasticSearch, Graph.js, nodemailer, JSON, Passport and Socket.io. Examples of these are available on my 
+                    a(href='https://github.com/samueljim') Github profile.
                 p Technical winner of 
                     a(href='https://medium.com/tanda-developers/brisbane-tanda-hackathon-2018-5e911c17d614') Tanda's 2018 hackathon. 
                 img(src='images/4.png', alt='a cute photo of me')
@@ -157,7 +159,7 @@ block content
                         .timeline-content
                             h4 
                                 a(href='https://ia-jn.com') International Alumni Job Network (ia-jn.com)
-                            p.mb-1 Full stack development of a global startup based in Brisbane. I built IA-JN.com’s job board and news website which contained elements such as login sessions, search functionality, progressive web application functionality and an admin Content Management System. I was reasonable for all parts of the project including management, SEO, deployment, design and testing. I was also responsible for promoting the IAJN and dealing with the requirements of more than 200 international companies. 
+                            p.mb-1 Full stack development of a global startup based in Brisbane. I built IA-JN.com’s job board and news website which contained elements such as login sessions, search functionality, progressive web application functionality and an admin Content Management System. I was responsible for all parts of the project including management, SEO, deployment, design and testing. I was also responsible for promoting the IAJN and dealing with the requirements of more than 200 international companies. 
                             h6
                                 a(href='https://www.qutbluebox.com.au/accelerate') QUT accelerator
                             | The start up was supported by the commercial arm of QUT, Bluebox. Working in a startup accelerator for the past year has taught me business, networking and client management skills. 
@@ -255,6 +257,7 @@ block content
                                 textarea#contactMessage(name='contactMessage', placeholder='message', rows='10', cols='50', required='')
                             .form-field
                                 button.submitform Submit
+                                button.stroke#thanks Thanks
                                 #submit-loader
                                     .text-loader Sending...
                                     .s-loader
@@ -307,7 +310,7 @@ block content
                     .icon
                         i.icon-mail
                     h5 Email Me At
-                    p me@samueljim.com
+                    p.white me@samueljim.com
                         br 
                         | sam@ia-jn.com
                         br 
@@ -316,7 +319,7 @@ block content
                     .icon
                         i.icon-phone
                     h5 Call Me At
-                    p 0405433639
+                    p.white 0405 433 639
 block footer
     footer
         .row

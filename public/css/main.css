@@ -105,6 +105,7 @@ a.white:active {
 	outline: 0;
 }
 
+.white,
 a.white {
 	color: #fff;
 }
@@ -2833,12 +2834,16 @@ header .logo a {
 }
 
 #message-success {
-	color: #FF0077;
+	color: #fff;
 }
 
 #message-warning i,
 #message-success i {
 	margin-right: 10px;
+}
+
+#thanks {
+	display: none;
 }
 
 /* form loader */

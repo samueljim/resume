@@ -237,7 +237,7 @@
 				url: "/",
 				data: $(form).serialize(),
 				beforeSend: function () {
-
+					$('.submitform').prop('disabled', true);
 					sLoader.fadeIn();
 
 				},
@@ -249,21 +249,25 @@
 						$('#message-warning').hide();
 						$('#contactForm').fadeOut();
 						$('#message-success').fadeIn();
+						$('#thanks').fadeIn();
+						$(form)[0].reset();
 					}
 					// There was an error
 					else {
 						sLoader.fadeOut();
-						$('#message-warning').html(msg);
-						$('#message-warning').fadeIn();
+						$('#contactForm').fadeOut();
+						$('#message-success').html(msg);
+						$('#message-success').fadeIn();
+						$('#thanks').fadeIn();
+						$(form)[0].reset();
 					}
 
 				},
 				error: function () {
-
+					$('.submitform').prop('disabled', false);
 					sLoader.fadeOut();
 					$('#message-warning').html("Something went wrong. Please try again.");
 					$('#message-warning').fadeIn();
-
 				}
 
 			});
