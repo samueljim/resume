@@ -30,9 +30,20 @@ const transporter = nodemailer.createTransport({
 
 // routes will go here
 app.get("/:name", function (req, res) {
-    res.render("index.pug", {
-        name: req.params.name
+    var name = req.params.name;
+    var content;
+    if (name == 'tanda') {
+        content = 'I want to work at tanda becasue i love the companys ideals';
+    } else if (name == 'microsoft') {
+        content = 'hey bill gates';
+    } else {
+        return res.render("index.pug");
+    }
+    return res.render("index.pug", {
+        name,
+        content
     });
+
 });
 app.get("/", function (req, res) {
     res.render("index.pug");

@@ -1,16 +1,16 @@
 
 doctype html
-//if IE 8 
-//if IE 9 
-// <![endif]
-head#top
+<!--[if IE 8 ]><html class="no-js oldie ie8" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js oldie ie9" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><html class="no-js" lang="en"> <![endif]-->
+head
     block meta
         // meta
         meta(charset='utf-8')
         title Samuel Henry
         meta(name='description', content='Technical Cofounder at International Alumni Job Network (IAJN)')
         meta(name='author', content='Samuel Henry')
-        meta(property='og:image', content='images/3.jpg')
+        meta(property='og:image', content='images/2.JPG')
         meta(property='og:url', content='https://samueljim.com')
         meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
     block css
@@ -25,6 +25,7 @@ head#top
     //  favicons
     link(rel='icon', type='image/png', href='favicon.png')
     // header
+body#top
 block top
     header
         .row
@@ -87,15 +88,22 @@ block content
         .row.section-intro
             .col-twelve
                 h5 About
-                h1 Let me introduce myself.
-                .intro-info
-                    img(src='images/profile-pic.jpg', alt='Profile Picture')
-                    p.lead Technical Cofounder at International Alumni Job Network (IAJN), graduate, filmmaker, coffee lover and rider of bikes.
+                if content
+                    h1 Why i should work at #{name}
+                    .intro-info
+                        img(src=`images/company/${name}.jpg`, alt='Profile Picture')
+                        p.lead= content
+                else
+                    h1 Let me introduce myself.
+                    .intro-info
+                        img(src='images/profile-pic.jpg', alt='Profile Picture')
+                        p.lead.mb-1 I want to make software that poeple want to use.
+                        p.lead Technical Cofounder at International Alumni Job Network (IAJN), graduate, filmmaker, coffee lover and rider of bikes.
         //section-intro
         .row.about-content
             h3 Skills
             .col-six.tab-full
-                p I have experience in many programming languages such as C, C#, C++, Java, Python, PHP, MySQL, HTML/CSS/SSAS and JavaScript.
+                p I have experience in many programming languages such as C, C#, C++, Java, Python, PHP, MySQL, HTML/CSS/SASS and JavaScript.
                 p I also have experience using the following: Cisco Networking, VScode, Visual Studio 2017, Treading code, Agile Project Management, Penetration Testing, VIM, GNU/Linux, Kali, GIT, Trello, Slack, Photoshop, Illustrator, After Effects, automated email servers, Premiere and Database migration.
                 ul.info-list
                     li
@@ -217,14 +225,13 @@ block content
                         img.fixed-height(src="images/shane-dillon.jpg", alt="Shane Dillon")
                         h4.mb-0 Shane Dillon
                         h6 CEO of IAJN
-                        blockquote Possible quote
+                        //- blockquote Possible quote
                 .col-six
                     a(href='https://www.linkedin.com/in/guidozuccon/')
                         img.fixed-height(src="images/guido-zuccon.jpg", alt="Dr Guido Zuccon")
                         h4.mb-0 Dr Guido Zuccon
                         h6 Research Project Supervisor
-                        blockquote Possible quote
-
+                        //- blockquote Possible 
     block form                        
         section#contact
             .row.section-intro
