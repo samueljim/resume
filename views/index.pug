@@ -7,11 +7,11 @@ head
     block meta
         // meta
         meta(charset='utf-8')
-        title Samuel Henry
-        meta(name='description', content='Technical Cofounder at International Alumni Job Network (IAJN)')
-        meta(name='keywords', content='Hire coders, javascript, developers, javascript developers, JS, node')
+        title Samuel J Henry
+        meta(name='description', content='Brisbane Javascript fullstack developer - Technical Cofounder at International Alumni Job Network (IAJN)')
+        meta(name='keywords', content='Hire coders, Brisbane, fullstack developer, fullstack, javascript, developers, javascript developers, JS, node')
         meta(name='author', content='Samuel Henry')
-        meta(property='og:image', content='images/2.JPG')
+        meta(property='og:image', content='images/1.JPG')
         meta(property='og:url', content='https://samueljim.com')
         meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
     block css
@@ -56,7 +56,7 @@ block content
                     if name
                         h5 #{name} application
                     else
-                        h5 Hello, World.
+                        h5 Hello World;
                     h1 I&apos;m Samuel Henry.
                     p.intro-position
                         span Javascript Developer
@@ -89,37 +89,41 @@ block content
         .row.section-intro
             .col-twelve
                 h5 About
-                if content
-                    h1 Why i should work at #{name}
-                    .intro-info
-                        img(src=`images/company/${name}.jpg`, alt='Profile Picture')
-                        p.lead= content
+                if name
+                    h1 Why i want to work at 
+                        span.force-uppercase #{name}
                 else
                     h1 Let me introduce myself.
-                    .intro-info
+                .intro-info
+                    if content
+                        img(src=`images/company/${name}.jpg`, alt='Profile Picture')
+                        p.lead.mb-1= content
+                    else
                         img(src='images/profile-pic.jpg', alt='Profile Picture')
-                        p.lead.mb-1 I want to make software that poeple want to use.
-                        p.lead Technical Cofounder at International Alumni Job Network (IAJN), graduate, filmmaker, coffee lover and rider of bikes.
+                        p.lead.mb-1 Technical Cofounder at 
+                            a(href='https://ia-jn.com/') IA-JN.com, 
+                            span graduate, filmmaker, coffee lover and rider of bikes.
+                    p.lead.mb-1 I want to make software that people want to use.
         //section-intro
         .row.about-content
             h3 Skills
             .col-six.tab-full
-                p I have experience in many programming languages such as C, C#, C++, Java, Python, PHP, MySQL, HTML/CSS/SASS and JavaScript.
-                p I also have experience using the following: Cisco Networking, VScode, Visual Studio 2017, Treading code, Agile Project Management, Penetration Testing, VIM, GNU/Linux, Kali, GIT, Trello, Slack, Photoshop, Illustrator, After Effects, automated email servers, Premiere and Database migration.
+                p I have experience with network security and programing experience in C, C#, C++, Java, Python, PHP, MySQL, HTML/CSS and JavaScript.
+                p I also have experience using the following: VScode, Cisco Networking, Visual Studio 2017, Treading code, Agile Project Management, Penetration Testing, VIM, GNU/Linux, Kali, GIT, Trello, Slack, Photoshop, Illustrator, After Effects, automated email servers, Premiere and database migration.
                 ul.info-list
                     li
-                        strong Fullname:
+                        strong Full name:
                         span Samuel James Henry
                     li
                         strong Birth Date:
                         span March 5, 1996
                     li
+                        strong Username:
+                        span samueljim
+                    li
                         strong Company:
                         span 
                             a(href='ia-jn.com') IA-JN.com
-                    li
-                        strong Usename:
-                        span samueljim
                     li
                         strong Email:
                         a(href='mailto:me@samueljim.com?Subject=Job inquiry', target='_top')
@@ -128,7 +132,7 @@ block content
             .col-six.tab-full
                 p My main language is JavaScript and I’ve made full stack apps with the following: Express.JS, Next.js, Pug, Angular.js, React.js, Bootstrap, MongoDB/noSQL, ElasticSearch, Graph.js, nodemailer, JSON, Passport and Socket.io. Examples of these are available on my 
                     a(href='https://github.com/samueljim') Github profile.
-                p Technical winner of 
+                p I was the Technical winner of 
                     a(href='https://medium.com/tanda-developers/brisbane-tanda-hackathon-2018-5e911c17d614') Tanda's 2018 hackathon. 
                 img(src='images/4.png', alt='a cute photo of me')
                 //skill-bars
@@ -153,7 +157,7 @@ block content
                 .timeline-wrap
                     .timeline-block
                         .timeline-ico
-                            svg.pt-2.pl-1(version='1.1', width='25px', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', x='0px', y='0px', viewbox='0 0 144.6 120', style='enable-background:new 0 0 144.6 120;', xml:space='preserve')
+                            svg.pt-2.pl-1(version='1.1', width='2.5rem', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', x='0px', y='0px', viewbox='0 0 144.6 120', style='enable-background:new 0 0 144.6 120;', xml:space='preserve')
                                 g.st0
                                     polygon(points='72.3,98.4 103.9,81.6 72.3,64.8 40.7,81.6 	')
                                     polygon(points='72.3,55.2 103.9,38.4 72.3,21.6 40.7,38.4 	')
@@ -185,7 +189,7 @@ block content
                     //timeline-block
                     .timeline-block
                         .timeline-ico
-                            img.pt-1(src="images/prokiln.svg", width='25px', alt="proKiln logo")
+                            img.proKiln(src="images/prokiln.svg" alt="proKiln logo")
                         .timeline-header
                             h3 Project Leader
                             p February 2017 – November 2017

@@ -27,12 +27,10 @@ app.get("/:name", function (req, res) {
     var name = req.params.name;
     var content;
     if (name == 'tanda') {
-        content = 'I want to work at tanda becasue i love the companys ideals';
-    }
-    else if (name == 'microsoft') {
-        content = 'hey bill gates';
-    }
-    else {
+        content = 'I want to work at tanda';
+    } else if (name == 'pra') {
+        content = 'PRA is leader in ';
+    } else {
         return res.render("index.pug");
     }
     return res.render("index.pug", {
@@ -54,11 +52,11 @@ app.post("/", function (req, res) {
     transporter
         .sendMail(mail)
         .then(function (cb) {
-        return res.status(200).send("Sent email to me@samueljim.com");
-    })["catch"](function (err) {
-        console.log(err);
-        return res.status(500).send('There was an issues sending that email');
-    });
+            return res.status(200).send("Sent email to me@samueljim.com");
+        })["catch"](function (err) {
+            console.log(err);
+            return res.status(500).send('There was an issues sending that email');
+        });
 });
 app.get("/cv", function (req, res) {
     var file = __dirname + "Samuel Henry 2018.pdf";

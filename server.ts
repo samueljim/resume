@@ -34,11 +34,13 @@ app.get("/:name", function(req, res) {
   var name = req.params.name;
   var content;
   if (name == "tanda") {
-    content = "I want to work at tanda becasue i love the companys ideals";
-  } else if (name == "microsoft") {
-    content = "hey bill gates";
+    content = "I want to work at tanda";
+  } else if (name == "pra") {
+    content = "hey bill gatess";
   } else {
-    return res.render("index.pug");
+    return res.render("index.pug", {
+      name
+    });
   }
   return res.render("index.pug", {
     name,

@@ -1592,7 +1592,7 @@ header .logo a {
 
 .intro-content h1 {
 	color: #FFFFFF;
-	font-family: "poppins-medium", sans-serif;
+	font-family: 'Lobster', "poppins-medium", sans-serif;
 	font-size: 8.4rem;
 	line-height: 1.071;
 	max-width: 900px;
@@ -2990,6 +2990,10 @@ footer .copyright span:last-child::after {
 	display: none;
 }
 
+footer .copyright a {
+	color: rgba(255, 255, 255, 0.1);
+}
+
 /**
  * responsive:
  * footer
@@ -3067,8 +3071,9 @@ footer .copyright span:last-child::after {
 	margin-bottom: 10px;
 }
 
-.pt-1 {
+.proKiln {
 	padding-top: 11px;
+	width: 20px;
 }
 
 .pt-2 {
@@ -3081,6 +3086,19 @@ footer .copyright span:last-child::after {
 
 .fixed-height {
 	max-height: 300px;
+}
+
+@media all and (max-width: 640px) {
+	.proKiln {
+		padding-top: 9px;
+		width: 15px;
+	}
+	.pt-2 {
+		padding-top: 0.6em;
+	}
+	.pl-1 {
+		padding-left: 0.3em;
+	}
 }
 
 .expandable {
@@ -3103,6 +3121,10 @@ footer .copyright span:last-child::after {
 
 .ico-colored-cross:hover {
 	background-color: #d1116b !important;
+}
+
+.force-uppercase {
+	text-transform: uppercase;
 }
 
 /*# sourceMappingURL=main.css.map */

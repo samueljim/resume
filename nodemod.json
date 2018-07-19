@@ -1,5 +1,5 @@
 {
     "ignore": ["**/*.test.ts", "**/*.spec.ts", ".git", "node_modules"],
-    "exec": "npm ts",
+    "exec": "ts-node ./server.ts",
     "ext": "ts"
 }
