@@ -335,5 +335,31 @@
 		}
 
 	});
+	/*----------------------------------------------------- */
+	/* Open expandable section
+   ------------------------------------------------------- */
+	var w = $(".expandable");
+	var l = $(".expandable-size");
+	w.height(0);
 
+	function toggleExpandable() {
+		if (w.hasClass('open')) {
+			w.removeClass('open');
+			w.height(0);
+			$.when($('.fa.fa-times').fadeOut()).done(function () {
+				$('div.timeline-ico.ico-colored').removeClass("ico-colored-cross");
+				$('.fa.fa-times').remove();
+				$('div.timeline-ico.ico-colored').html("<i class='fa fa-arrow-down'></i>");
+			});
+		} else {
+			w.addClass('open');
+			w.height(l.outerHeight(true));
+			$.when($('.fa.fa-arrow-down').fadeOut()).done(function () {
+				$('.fa.fa-arrow-down').remove();
+				$('div.timeline-ico.ico-colored').addClass("ico-colored-cross");
+				$('div.timeline-ico.ico-colored').html("<i class='fa fa-times'></i>");
+			});
+		}
+	}
+	$(".openExpandable").click(toggleExpandable);
 })(jQuery);

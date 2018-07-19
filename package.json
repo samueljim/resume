@@ -2,15 +2,23 @@
     "name": "samuel_henry",
     "main": "server.js",
     "dependencies": {
+        "@types/express": "^4.16.0",
+        "@types/jest": "^23.3.0",
         "body-parser": "^1.18.3",
         "express": "~4.10.2",
+        "jest": "^23.4.1",
         "nodemailer": "^4.6.7",
         "nodemailer-mailgun-transport": "^1.4.0",
         "nodemod": "^1.5.19",
-        "pug": "2.0.3"
+        "pug": "2.0.3",
+        "ts-jest": "^23.0.0",
+        "ts-node": "^7.0.0",
+        "typescript": "^2.9.2"
     },
     "scripts": {
+        "dev": "nodemon",
         "start": "set NODE_ENV=production&&node server.js",
-        "dev": "nodemon -e js,html,pug,css server.js"
+        "ts": "set NODE_ENV=production&&ts-node server.ts",
+        "old-dev": "nodemon -e js,html,pug,css,ts server.js"
     }
 }

@@ -9,6 +9,7 @@ head
         meta(charset='utf-8')
         title Samuel Henry
         meta(name='description', content='Technical Cofounder at International Alumni Job Network (IAJN)')
+        meta(name='keywords', content='Hire coders, javascript, developers, javascript developers, JS, node')
         meta(name='author', content='Samuel Henry')
         meta(property='og:image', content='images/2.JPG')
         meta(property='og:url', content='https://samueljim.com')
@@ -152,7 +153,14 @@ block content
                 .timeline-wrap
                     .timeline-block
                         .timeline-ico
-                            i.fa.fa-briefcase
+                            svg.pt-2.pl-1(version='1.1', width='25px', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', x='0px', y='0px', viewbox='0 0 144.6 120', style='enable-background:new 0 0 144.6 120;', xml:space='preserve')
+                                g.st0
+                                    polygon(points='72.3,98.4 103.9,81.6 72.3,64.8 40.7,81.6 	')
+                                    polygon(points='72.3,55.2 103.9,38.4 72.3,21.6 40.7,38.4 	')
+                                    polygon(points='0,16.8 31.6,33.6 63.2,16.8 31.6,0 	')
+                                    polygon(points='0,60 31.6,76.8 63.2,60 31.6,43.2 	')
+                                    polygon(points='113,76.8 144.6,60 113,43.2 81.4,60 	')
+                                    polygon(points='0,103.2 31.6,120 63.2,103.2 31.6,86.5 	')
                         .timeline-header
                             h3 Technical CO Founder and CTO
                             p November 2017 - Present
@@ -166,7 +174,7 @@ block content
                     //timeline-block
                     .timeline-block
                         .timeline-ico
-                            i.fa.fa-briefcase
+                            img.pt-2.pl-1(src="images/codecamp.svg", width='35px', alt="code camp")
                         .timeline-header
                             h3 Head Teacher
                             p May 2017  – Present
@@ -177,7 +185,7 @@ block content
                     //timeline-block
                     .timeline-block
                         .timeline-ico
-                            i.fa.fa-briefcase
+                            img.pt-1(src="images/prokiln.svg", width='25px', alt="proKiln logo")
                         .timeline-header
                             h3 Project Leader
                             p February 2017 – November 2017
@@ -185,6 +193,50 @@ block content
                             h4 
                                 a(href='https://prokiln.herokuapp.com/') proKiln (www.prokiln.com)
                             p This project was undertaken for Dr Guido Zuccon. proKiln has was designed to be the most advanced glass Kiln controller to-date. It involved a raspberry pi which controlled furnaces and a website which was used to schedule, monitor and program firing runs. 
+                    .timeline-block.openExpandable
+                        a(onClick='toggleExpandable()')
+                            .timeline-ico.ico-colored
+                                i.fa.fa-arrow-down
+                            .timeline-content
+                                h3 Show more              
+                    .expandable
+                        .expandable-size
+                            .timeline-block
+                                .timeline-ico
+                                    i.fa.fa-briefcase
+                                .timeline-header
+                                    h3 Courier
+                                    p November 2017 – March 2018
+                                .timeline-content
+                                    h4 Uber Eats
+                                    p UberEats delivery courier. Delivery of takeaway meals to customers’ homes by pushbike. 
+                            .timeline-block
+                                .timeline-ico
+                                    i.fa.fa-briefcase
+                                .timeline-header
+                                    h3 Casual
+                                    p November 2015 – February 2016
+                                .timeline-content
+                                    h4 Executive IT Connections
+                                    p The role involved relocation of computers.
+                            .timeline-block
+                                .timeline-ico
+                                    i.fa.fa-briefcase
+                                .timeline-header
+                                    h3 Christmas Casual
+                                    p November 2014 to December 2014 
+                                .timeline-content
+                                    h4 Kidstuff Toy Store Indooroopilly 
+                                    p The role involved customer service, register work, gift wrapping, restocking and labelling items. 
+                            .timeline-block
+                                .timeline-ico
+                                    i.fa.fa-briefcase
+                                .timeline-header
+                                    h3 Webmaster
+                                    p 2014 - Present
+                                .timeline-content
+                                    h4 South Brisbane Sailing Club and Nudge Beach Environmental Education Centre
+                                    p On going maintenance and upgrades of websites. 
                     //timeline-block
                 //timeline-wrap
             //col-twelve
@@ -227,13 +279,14 @@ block content
                         img.fixed-height(src="images/shane-dillon.jpg", alt="Shane Dillon")
                         h4.mb-0 Shane Dillon
                         h6 CEO of IAJN
-                        //- blockquote Possible quote
+                    blockquote Sam delivered timely project outcomes with a focus on user experience
+
                 .col-six
                     a(href='https://www.linkedin.com/in/guidozuccon/')
                         img.fixed-height(src="images/guido-zuccon.jpg", alt="Dr Guido Zuccon")
                         h4.mb-0 Dr Guido Zuccon
                         h6 Research Project Supervisor
-                        //- blockquote Possible 
+                    //- blockquote Possible quote
     block form                        
         section#contact
             .row.section-intro
