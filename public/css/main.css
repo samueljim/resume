@@ -1262,7 +1262,7 @@ input::-moz-focus-inner {
 	max-width: 700px;
 	margin-left: auto;
 	margin-right: auto;
-	text-align: center;
+	text-align: left;
 	margin-bottom: 3.6rem;
 	position: relative;
 }
@@ -1862,12 +1862,11 @@ header .logo a {
 	width: 250px;
 }
 
-.button-section [class*="col-"] .button {
-	margin-right: 4rem;
-}
-
-.button-section [class*="col-"] .button:last-child {
-	margin-right: 0rem;
+@media only screen and (min-width:768px) {
+	.button-section [class*="col-"] .button {
+		margin-left: 1rem;
+		margin-right: 1rem;
+	}
 }
 
 /**
@@ -1920,7 +1919,7 @@ header .logo a {
 	}
 	.intro-info .lead {
 		padding-left: 0;
-		text-align: center;
+		text-align: left;
 	}
 }
 
@@ -3088,7 +3087,26 @@ footer .copyright a {
 	max-height: 300px;
 }
 
-@media all and (max-width: 640px) {
+.center {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+@media all and (max-width: 750px) {
+	.proKiln {
+		padding-top: 12px;
+		width: 20px;
+	}
+	.pt-2 {
+		padding-top: 0.9em;
+	}
+	.pl-1 {
+		padding-left: 0.3em;
+	}
+}
+
+@media all and (max-width: 480px) {
 	.proKiln {
 		padding-top: 9px;
 		width: 15px;

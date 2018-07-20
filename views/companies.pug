@@ -1,0 +1,16 @@
+mixin company(name)
+    div(title=name)
+        if name === 'pra'
+            img(src=`images/company/pra.jpg`, alt=`${name} logo`)
+            p.lead.mb-1 I want to work fulltime building high quality products that take advantage of the latest developments in JavaScript. I have experience working with the international market, building web apps with node, HTML5, CSS as well as some experience with ARIA. I have a degree in computer science and a understanding of how to build software that prioritizes the end user’s experience. 
+        else if name === 'demo'
+            img(src=`images/company/tanda.jpg`, alt=`${name} logo`)
+            p.lead.mb-1 this is a demo of the changing site 
+        else if name === 'demo'
+            img(src=`images/company/tanda.jpg`, alt=`${name} logo`)
+            p.lead.mb-1 this is a demo of the changing site 
+        else 
+            img(src='images/profile-pic.jpg', alt='Profile Picture')
+            p.lead.mb-1 Technical Cofounder at 
+                a(href='https://ia-jn.com/') IA-JN.com, 
+                span graduate, filmmaker, coffee lover and rider of bikes.

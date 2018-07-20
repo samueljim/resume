@@ -263,10 +263,14 @@
 					}
 
 				},
-				error: function () {
+				error: function (msg) {
+					if (msg == 'OK') {
+						$('#message-warning').html("Something went wrong. Please try again.");
+					} else {
+						$('#message-warning').html(msg);
+					}
 					$('.submitform').prop('disabled', false);
 					sLoader.fadeOut();
-					$('#message-warning').html("Something went wrong. Please try again.");
 					$('#message-warning').fadeIn();
 				}
 

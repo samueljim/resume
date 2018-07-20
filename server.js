@@ -3,6 +3,10 @@ var pug = require("pug");
 var path = require("path");
 var nodemailer = require("nodemailer");
 var app = express();
+var {
+    check,
+    validationResult
+} = require('express-validator/check');
 var port = process.env.PORT || 4000;
 var bodyParser = require("body-parser");
 app.set("views", "./views");
@@ -22,27 +26,30 @@ var transporter = nodemailer.createTransport({
         pass: "zzroorgvlhqylwsz"
     }
 });
+
 // routes will go here
 app.get("/:name", function (req, res) {
     var name = req.params.name;
-    var content;
-    if (name == 'tanda') {
-        content = 'I want to work at tanda';
-    } else if (name == 'pra') {
-        content = 'PRA is leader in ';
-    } else {
-        return res.render("index.pug");
-    }
     return res.render("index.pug", {
-        name: name,
-        content: content
+        name: name
     });
 });
 app.get("/", function (req, res) {
     res.render("index.pug");
 });
-app.post("/", function (req, res) {
+app.post("/", [
+    check('contactEmail').isEmail().normalizeEmail().withMessage('That\'s not an email address i can contact you at'),
+    check('contactSubject').trim().escape(),
+    check('contactMessage').trim().escape().withMessage('please send message longer than 5 characters'),
+    check('contactName').not().isEmpty().trim().escape().withMessage('What is your name?'),
+], function (req, res) {
     console.log(req.body);
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(500).json({
+            errors: errors.array()
+        });
+    }
     var mail = {
         to: "me@samueljim.com",
         from: "" + req.body.contactEmail,

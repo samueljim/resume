@@ -29,24 +29,23 @@ head
 body#top
 block top
     header
-        .row
-            .top-bar
-                a.menu-toggle(href='#')
-                    span Menu
-                .logo
-                    a(href='index.html') Samuel
-                nav#main-nav-wrap
-                    ul.main-navigation
-                        li.current
-                            a.smoothscroll(href='#intro', title='') Home
-                        li
-                            a.smoothscroll(href='#about', title='') About
-                        li
-                            a.smoothscroll(href='#resume', title='') Resume
-                        li
-                            a.smoothscroll(href='#references', title='') References
-                        li
-                            a.smoothscroll(href='#contact', title='') Contact
+        .top-bar
+            a.menu-toggle(href='#')
+                span Menu
+            .logo
+                a(href='index.html')
+            nav#main-nav-wrap
+                ul.main-navigation
+                    li.current
+                        a.smoothscroll(href='#intro', title='') Home
+                    li
+                        a.smoothscroll(href='#about', title='') About
+                    li
+                        a.smoothscroll(href='#resume', title='') Resume
+                    li
+                        a.smoothscroll(href='#references', title='') References
+                    li
+                        a.smoothscroll(href='#contact', title='') Contact
 block content
     section#intro
         .intro-overlay
@@ -59,8 +58,8 @@ block content
                         h5 Hello World;
                     h1 I&apos;m Samuel Henry.
                     p.intro-position
-                        span Javascript Developer
-                        span CTO of IAJN
+                        span JavaScript Developer
+                        span CTO of IA-JN
                     a.button.stroke.smoothscroll(href='#about', title='more') More About Me
         ul.intro-social
             li
@@ -95,9 +94,9 @@ block content
                 else
                     h1 Let me introduce myself.
                 .intro-info
-                    if content
-                        img(src=`images/company/${name}.jpg`, alt='Profile Picture')
-                        p.lead.mb-1= content
+                    if name
+                        include ./companies
+                        +company(name)
                     else
                         img(src='images/profile-pic.jpg', alt='Profile Picture')
                         p.lead.mb-1 Technical Cofounder at 
@@ -121,9 +120,8 @@ block content
                         strong Username:
                         span samueljim
                     li
-                        strong Company:
-                        span 
-                            a(href='ia-jn.com') IA-JN.com
+                        strong Location:
+                        span Brisbane QLD
                     li
                         strong Email:
                         a(href='mailto:me@samueljim.com?Subject=Job inquiry', target='_top')
@@ -231,7 +229,7 @@ block content
                                     p November 2014 to December 2014 
                                 .timeline-content
                                     h4 Kidstuff Toy Store Indooroopilly 
-                                    p The role involved customer service, register work, gift wrapping, restocking and labelling items. 
+                                    p The role involved customer service, register work, gift wrapping, restocking and labeling items. 
                             .timeline-block
                                 .timeline-ico
                                     i.fa.fa-briefcase
@@ -240,7 +238,7 @@ block content
                                     p 2014 - Present
                                 .timeline-content
                                     h4 South Brisbane Sailing Club and Nudge Beach Environmental Education Centre
-                                    p On going maintenance and upgrades of websites. 
+                                    p Ongoing maintenance and upgrades of websites. 
                     //timeline-block
                 //timeline-wrap
             //col-twelve
@@ -279,14 +277,14 @@ block content
                 h1 Want to know more about me?
             .row    
                 .col-six
-                    a(href='https://www.linkedin.com/in/shane-dillon-48570012/')
+                    a.center(href='https://www.linkedin.com/in/shane-dillon-48570012/')
                         img.fixed-height(src="images/shane-dillon.jpg", alt="Shane Dillon")
                         h4.mb-0 Shane Dillon
                         h6 CEO of IAJN
                     blockquote Sam delivered timely project outcomes with a focus on user experience
 
                 .col-six
-                    a(href='https://www.linkedin.com/in/guidozuccon/')
+                    a.center(href='https://www.linkedin.com/in/guidozuccon/')
                         img.fixed-height(src="images/guido-zuccon.jpg", alt="Dr Guido Zuccon")
                         h4.mb-0 Dr Guido Zuccon
                         h6 Research Project Supervisor
@@ -360,7 +358,7 @@ block content
                         br
                         a.white(href='https://github.com/samueljim/ETAssistant') ETAassistant
                         br
-                        a.white(href='https://github.com/samueljim/elastic-stained-glass') Elastic Serach project
+                        a.white(href='https://github.com/samueljim/elastic-stained-glass') Elastic Search project
                         br
                         a.white(href='https://github.com/samueljim/photoServer') MongoDB photoserver
                 .col-four.tab-full.collapse
