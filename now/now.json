@@ -1,0 +1,12 @@
+{
+    "version": 2,
+    "name": "express",
+    "builds": [
+        { "src": "api/**", "use": "@now/node" },
+        { "src": "static/**", "use": "@now/static" }
+    ],
+    "routes": [
+        { "src": "/api/(.*)", "dest": "/api/$1" },
+        { "src": "/static/index.html", "dest": "/www/$1" }
+    ]
+}
