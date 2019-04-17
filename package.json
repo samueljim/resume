@@ -1,4 +1,4 @@
-expres {
+{
   "name": "nodejs-express",
   "version": "1.0.0",
   "main": "index.js",
@@ -6,6 +6,7 @@ expres {
   "scripts": {
     "start": "node .",
     "dev": "nodemon .",
+    "now": "now",
     "static": "parcel ./views/index.html"
   },
   "dependencies": {
