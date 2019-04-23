@@ -11,9 +11,9 @@ const asyncMiddleware = fnc =>
             .catch(next);
     };
 
-app.get('/:url', asyncMiddleware(async (req, res, next) => {
-    (req.params.url) ? request(req.params.url).pipe(res) : next('No url');
-}));
+// app.get('/:url', asyncMiddleware(async (req, res, next) => {
+//     (req.params.url) ? request(req.params.url).pipe(res) : next('No url');
+// }));
 
 app.get('*', asyncMiddleware(async (req, res, next) => {
     (req.query.url) ? request(req.query.url).pipe(res) : next(req.query.url);
@@ -21,8 +21,8 @@ app.get('*', asyncMiddleware(async (req, res, next) => {
 
 // if there's an error in routing then this will happen
 app.use(function (err, req, res, next) {
-    res.status(200).send(err);
-    res.end();
+    res.send(err);
+    // res.end();
 });
 
 module.exports = app
