@@ -16,7 +16,7 @@ const asyncMiddleware = fnc =>
 // }));
 
 app.get('*', asyncMiddleware(async (req, res, next) => {
-    (req.query.url) ? request(req.query.url).pipe(res) : next(req.query.url);
+    (req.query.url) ? request(req.query.url).pipe(res) : res.send('Bad url');
 }));
 
 // if there's an error in routing then this will happen
