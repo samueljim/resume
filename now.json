@@ -8,7 +8,7 @@
     ],
     "routes": [
         { "src": "/api/(.*)", "dest": "/api/$1" },
-        { "src": "/proxy/(.*)", "dest": "/api/proxy/index.js" },
+        { "src": "/proxy/(.*)", "dest": "/api/proxy/$1" },
         { "src": "/", "dest": "/views/index.html" },
         { "src": "/(.*)", "dest": "static/$1" }
     ],
