@@ -21,7 +21,7 @@ app.get('*', asyncMiddleware(async (req, res, next) => {
 
 // if there's an error in routing then this will happen
 app.use(function (err, req, res, next) {
-    res.status(500).send(err);
+    res.status(200).send(err);
     res.end();
 });
 
