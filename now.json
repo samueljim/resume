@@ -7,8 +7,7 @@
         { "src": "views/**", "use": "@now/static" }
     ],
     "routes": [
-        { "src": "/proxy/(?<url>[^/]+)", "dest": "/api/proxy/?url=$url" },
-        { "src": "/api/email/(.*)", "dest": "/api/email/$1" },
+        { "src": "/api/(.*)", "dest": "/api/$1" },
         { "src": "/", "dest": "/views/index.html" },
         { "src": "/(.*)", "dest": "static/$1" }
     ],
