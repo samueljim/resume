@@ -11,11 +11,11 @@ const asyncMiddleware = fnc =>
             .catch(next);
     };
 
-app.get('/:url', dpeMiddleware, asyncMiddleware(async (req, res, next) => {
+app.get('/:url', asyncMiddleware(async (req, res, next) => {
     (req.params.url) ? request(req.params.url).pipe(res) : next('No url');
 }));
 
-app.get('*', dpeMiddleware, asyncMiddleware(async (req, res, next) => {
+app.get('*', asyncMiddleware(async (req, res, next) => {
     (req.query.url) ? request(req.query.url).pipe(res) : next(req.query.url);
 }));
 
