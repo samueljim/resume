@@ -39,7 +39,7 @@ body {
 	font-family: "lora-regular", serif;
 	font-size: 1.7rem;
 	line-height: 3rem;
-	color: #6e6e6e;
+	color: #000000a6;
 }
 
 /**
@@ -170,7 +170,7 @@ p.lead {
 	font-family: "lora-regular", serif;
 	font-size: 2rem;
 	line-height: 1.8;
-	color: #888888;
+	color: #751818db;
 }
 
 @media only screen and (max-width:768px) {
