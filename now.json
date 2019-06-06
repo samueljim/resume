@@ -5,7 +5,7 @@
     "alias": ["samueljim.com"],
     "github": {
         "autoAlias": true
-    }
+    },
     "regions": ["syd1","all"],
     "builds": [
         { "src": "api/**", "use": "@now/node" },
