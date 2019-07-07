@@ -19,7 +19,8 @@
 
 			// will fade out the whole DIV that covers the website.
 			$("#preloader").delay(300).fadeOut("slow");
-
+			// start hello world message 
+			printLetters(0)
 		});
 
 	})
@@ -368,7 +369,6 @@
 	}
 	$(".openExpandable").click(toggleExpandable);
 
-
 	// Hello world 
 	
 	function placeCaretAtEnd(el) {
@@ -389,8 +389,14 @@
 		}
 	}
 	
-	placeCaretAtEnd( document.querySelector('.helloworld') );
-	setTimeout(function() {
-		$(".helloworld").focus();
-	}, 0);
+	var introString = `Hello_world`;
+	function printLetters(i) {
+        	var delay = Math.floor( Math.random() * ( 1 + 300 - 50 ) ) + 80;
+		if (i <= introString.length)
+		setTimeout(function() {
+		  document.querySelector('.helloworld').innerHTML += introString.charAt(i);
+		 	placeCaretAtEnd( document.querySelector('.helloworld') );
+		 	printLetters(i + 1)
+		}, delay);
+	}
 })(jQuery);
