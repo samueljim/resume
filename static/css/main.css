@@ -2022,7 +2022,7 @@ header .logo a {
 #resume .timeline-ico i {
 	position: relative;
 	left: .05rem;
-	top: .2rem;
+	top: 1.3rem;
 }
 
 #resume .timeline-header {
@@ -3024,6 +3024,7 @@ footer .footer-social li a {
 
 footer .copyright span {
 	display: inline-block;
+	color: #797979;
 }
 
 footer .copyright span::after {
