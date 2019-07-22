@@ -29,7 +29,7 @@ async function getScreenshot(url, query) {
     if (!query.type) {
         file = await page.content();
     } else {
-        file = await page.screenshot({ type: 'jpeg', fullPage: true });
+        file = await page.screenshot({ type: 'jpeg', fullPage: query.fullheight || false });
     }
     await browser.close();
     return file;
@@ -37,6 +37,8 @@ async function getScreenshot(url, query) {
 
 
 module.exports = async function (req, res) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     try {
         const { query = {} } = parse(req.url, true);
         const type = (query && query.type) ? query.type : null;
@@ -61,28 +63,7 @@ module.exports = async function (req, res) {
     } catch (e) {
         res.statusCode = 500;
         res.setHeader('Content-Type', 'text/html');
-        res.end('<h1>Server Error</h1><p>Sorry, there was a problem</p>');
+        res.end('<h1>500 Server Error</h1><p>Sorry, there was a problem</p>');
         console.error(e.message);
     }
 };
-
-// module.exports = async (req, res) => {
-//     var url_parts = domain.parse(req.url, true);
-//     var query = url_parts.query;
-//     console.log(url_parts)
-//     console.log(query)
-//     let url = query.url;
-//     // let url = pathname.slice(1);
-
-//     if (!url.startsWith('http')) {
-//         url = 'https://' + url; // add protocol if missing
-//     }
-//     let data = await getScreenshot(url, type);
-//     res.statusCode = 200;
-//     if (!type) {
-//         res.setHeader('Content-Type', 'application/json');
-//     } else {
-
-//     }
-//     res.end(data);
-// }
