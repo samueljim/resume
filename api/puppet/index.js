@@ -44,7 +44,7 @@ module.exports = async function (req, res) {
         if (!pathname) {
             res.statusCode = 400;
             res.setHeader('Content-Type', 'text/html');
-            res.end(`
+            return res.end(`
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tachyons/4.11.1/tachyons.min.css" />
                 <article class="mw5 center bg-white br3 pa3 pa4-ns mv3 ba b--black-10">
                 <div class="tc">
@@ -62,40 +62,42 @@ module.exports = async function (req, res) {
                 </p>
             </article>
             `);
-        }
-          if (!pathname.startsWith('http')) {
-            pathname = 'https://' + pathname
-        }
-        if (!isValidUrl(pathname)) {
-            res.statusCode = 400;
-            res.setHeader('Content-Type', 'text/html');
-            res.end(`
-                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tachyons/4.11.1/tachyons.min.css" />
-                <article class="mw5 center bg-white br3 pa3 pa4-ns mv3 ba b--black-10">
-                <div class="tc">
-                <img src="http://tachyons.io/img/avatar_1.jpg" class="br-100 h3 w3 dib" title="Photo of a kitty staring at you">
-                <h1 class="f4">URL error</h1>
-                <hr class="mw3 bb bw1 b--black-10">
-                </div>
-                <p class="lh-copy measure center f6 black-70">
-                    ${pathname} is not a valid url
-                </p>
-            </article>
-            `);
         } else {
-            const file = await getScreenshot(pathname, query);
-            res.statusCode = 200;
-            if (type == 'image') {
-                res.setHeader('Content-Type', `image/jpeg`);
-            } else {
-                res.setHeader('Content-Type', 'application/json');
+            if (!pathname.startsWith('http')) {
+                pathname = 'https://' + pathname
             }
-            res.end(file);
+            if (!isValidUrl(pathname)) {
+                res.statusCode = 400;
+                res.setHeader('Content-Type', 'text/html');
+                return res.end(`
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tachyons/4.11.1/tachyons.min.css" />
+                    <article class="mw5 center bg-white br3 pa3 pa4-ns mv3 ba b--black-10">
+                    <div class="tc">
+                    <img src="http://tachyons.io/img/avatar_1.jpg" class="br-100 h3 w3 dib" title="Photo of a kitty staring at you">
+                    <h1 class="f4">URL error</h1>
+                    <hr class="mw3 bb bw1 b--black-10">
+                    </div>
+                    <p class="lh-copy measure center f6 black-70">
+                        ${pathname} is not a valid url
+                    </p>
+                </article>
+                `);
+            } else {
+                const file = await getScreenshot(pathname, query);
+                res.statusCode = 200;
+                if (type == 'image') {
+                    res.setHeader('Content-Type', `image/jpeg`);
+                } else {
+                    res.setHeader('Content-Type', 'application/json');
+                }
+                return res.end(file);
+            }
         }
     } catch (e) {
         res.statusCode = 500;
+        console.error(e.message);
         res.setHeader('Content-Type', 'text/html');
-        res.end(`
+        return res.end(`
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tachyons/4.11.1/tachyons.min.css" />
             <article class="mw5 center bg-white br3 pa3 pa4-ns mv3 ba b--black-10">
             <div class="tc">
@@ -108,6 +110,5 @@ module.exports = async function (req, res) {
             </p>
         </article>
         `);
-        console.error(e.message);
     }
 };
