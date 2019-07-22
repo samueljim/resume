@@ -26,7 +26,7 @@ async function getScreenshot(url, type) {
     if (!type) {
         file = await page.content();
     } else {
-        file = await page.screenshot({ type });
+        file = await page.screenshot({ type: 'jpeg', fullPage: true });
     }
     await browser.close();
     return file;
@@ -47,8 +47,8 @@ module.exports = async function (req, res) {
         } else {
             const file = await getScreenshot(pathname, type);
             res.statusCode = 200;
-            if (type) {
-                res.setHeader('Content-Type', `image/${type}`);
+            if (type == 'image') {
+                res.setHeader('Content-Type', `image/jpeg`);
             } else {
                 res.setHeader('Content-Type', 'application/json');
             }
