@@ -1,3 +1,4 @@
+const { parse } = require('url');
 const chrome = require('chrome-aws-lambda');
 const puppeteer = require('puppeteer-core');
 const { getInt, getUrlFromPath, isValidUrl } = require('./validator');
@@ -24,7 +25,7 @@ async function getScreenshot(url, type) {
 module.exports = async function (req, res) {
     try {
         const { pathname = '/', query = {} } = parse(req.url, true);
-        const type =  query.type;
+        const type = query.type;
         const url = getUrlFromPath(pathname);
         console.log(url)
         if (!isValidUrl(url)) {
