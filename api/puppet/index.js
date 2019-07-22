@@ -23,7 +23,7 @@ async function getScreenshot(url, query) {
     var file;
     const page = await browser.newPage();
     if (query.width || query.height) {
-        await page.setViewport({width:query.width || 800, height:query.height || 800});
+        await page.setViewport({width: (query.width) ? parseInt(query.width) : 800, height: (query.height) ? parseInt(query.height) : 800});
     }
     await page.goto(url);
     if (!query.type) {
