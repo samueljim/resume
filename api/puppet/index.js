@@ -62,6 +62,7 @@ module.exports = async function (req, res) {
                 </p>
             </article>
             `);
+        }
           if (!pathname.startsWith('http')) {
             pathname = 'https://' + pathname
         }
