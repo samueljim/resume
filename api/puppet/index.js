@@ -1,7 +1,17 @@
 const { parse } = require('url');
 const chrome = require('chrome-aws-lambda');
 const puppeteer = require('puppeteer-core');
-const { getInt, getUrlFromPath, isValidUrl } = require('./validator');
+
+function isValidUrl(str) {
+    try {
+        const url = new URL(str);
+        return url.hostname.includes('.');
+    } catch(e) {
+        console.error(e.message);
+        return false;
+    }
+}
+
 
 async function getScreenshot(url, type) {
     const browser = await puppeteer.launch({
@@ -29,14 +39,12 @@ module.exports = async function (req, res) {
         const pathname = (query && query.url) ? query.url : null;
         console.log(type)
         console.log(pathname)
-        const url = getUrlFromPath(pathname);
-        console.log(url);
-        if (!isValidUrl(url)) {
+        if (!isValidUrl(pathname)) {
             res.statusCode = 400;
             res.setHeader('Content-Type', 'text/html');
-            res.end(`<h1>Bad Request</h1><p>The url <em>${url}</em> is not valid.</p>`);
+            res.end(`<h1>Bad Request</h1><p>The url <em>${pathname}</em> is not valid.</p>`);
         } else {
-            const file = await getScreenshot(url, type);
+            const file = await getScreenshot(pathname, type);
             res.statusCode = 200;
             if (type) {
                 res.setHeader('Content-Type', `image/${type}`);
