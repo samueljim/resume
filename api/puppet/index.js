@@ -13,17 +13,20 @@ function isValidUrl(str) {
 }
 
 
-async function getScreenshot(url, type) {
+async function getScreenshot(url, query) {
     const browser = await puppeteer.launch({
         args: chrome.args,
         executablePath: await chrome.executablePath,
         headless: chrome.headless,
     });
 
-    const page = await browser.newPage();
     var file;
+    const page = await browser.newPage();
+    if (query.width || query.height) {
+        await page.setViewport({width:query.width || 800, height:query.height || 800});
+    }
     await page.goto(url);
-    if (!type) {
+    if (!query.type) {
         file = await page.content();
     } else {
         file = await page.screenshot({ type: 'jpeg', fullPage: true });
@@ -46,7 +49,7 @@ module.exports = async function (req, res) {
             res.setHeader('Content-Type', 'text/html');
             res.end(`<h1>Bad Request</h1><p>The url <em>${pathname}</em> is not valid.</p>`);
         } else {
-            const file = await getScreenshot(pathname, type);
+            const file = await getScreenshot(pathname, query);
             res.statusCode = 200;
             if (type == 'image') {
                 res.setHeader('Content-Type', `image/jpeg`);
