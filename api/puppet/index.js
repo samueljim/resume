@@ -1,4 +1,4 @@
-const { parse } = require('url');
+const { parse, URL } = require('url');
 const chrome = require('chrome-aws-lambda');
 const puppeteer = require('puppeteer-core');
 
@@ -21,11 +21,12 @@ async function getScreenshot(url, type) {
     });
 
     const page = await browser.newPage();
+    var file;
     await page.goto(url);
     if (!type) {
-        const file = await page.content();
+        file = await page.content();
     } else {
-        const file = await page.screenshot({ type });
+        file = await page.screenshot({ type });
     }
     await browser.close();
     return file;
