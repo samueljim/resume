@@ -37,19 +37,50 @@ async function getScreenshot(url, query) {
 
 
 module.exports = async function (req, res) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     try {
         const { query = {} } = parse(req.url, true);
         const type = (query && query.type) ? query.type : null;
         var pathname = (query && query.url) ? query.url : null;
-        if (!pathname.startsWith('http')) {
+        if (!pathname) {
+            res.statusCode = 400;
+            res.setHeader('Content-Type', 'text/html');
+            res.end(`
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tachyons/4.11.1/tachyons.min.css" />
+                <article class="mw5 center bg-white br3 pa3 pa4-ns mv3 ba b--black-10">
+                <div class="tc">
+                <img src="http://tachyons.io/img/avatar_1.jpg" class="br-100 h3 w3 dib" title="Photo of a kitty staring at you">
+                <h1 class="f4">No url supplied</h1>
+                <hr class="mw3 bb bw1 b--black-10">
+                </div>
+                <p class="lh-copy measure center f6 black-70">
+                    Please send a url query string <br>
+                    https://samueljim.com/puppet/?url=https://google.com.au/maps
+                </p>
+                <p class="lh-copy measure center f6 black-70">
+                    Screen shot example <br>
+                    https://samueljim.com/puppet/?type=image&width=1000&fullheight=true&url=https://google.com.au/maps
+                </p>
+            </article>
+            `);
+          if (!pathname.startsWith('http')) {
             pathname = 'https://' + pathname
         }
         if (!isValidUrl(pathname)) {
             res.statusCode = 400;
             res.setHeader('Content-Type', 'text/html');
-            res.end(`<h1>Bad Request</h1><p>The url <em>${pathname}</em> is not valid.</p>`);
+            res.end(`
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tachyons/4.11.1/tachyons.min.css" />
+                <article class="mw5 center bg-white br3 pa3 pa4-ns mv3 ba b--black-10">
+                <div class="tc">
+                <img src="http://tachyons.io/img/avatar_1.jpg" class="br-100 h3 w3 dib" title="Photo of a kitty staring at you">
+                <h1 class="f4">URL error</h1>
+                <hr class="mw3 bb bw1 b--black-10">
+                </div>
+                <p class="lh-copy measure center f6 black-70">
+                    ${pathname} is not a valid url
+                </p>
+            </article>
+            `);
         } else {
             const file = await getScreenshot(pathname, query);
             res.statusCode = 200;
@@ -63,7 +94,19 @@ module.exports = async function (req, res) {
     } catch (e) {
         res.statusCode = 500;
         res.setHeader('Content-Type', 'text/html');
-        res.end('<h1>500 Server Error</h1><p>Sorry, there was a problem</p>');
+        res.end(`
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tachyons/4.11.1/tachyons.min.css" />
+            <article class="mw5 center bg-white br3 pa3 pa4-ns mv3 ba b--black-10">
+            <div class="tc">
+            <img src="http://tachyons.io/img/avatar_1.jpg" class="br-100 h3 w3 dib" title="Photo of a kitty staring at you">
+            <h1 class="f4">Server error</h1>
+            <hr class="mw3 bb bw1 b--black-10">
+            </div>
+            <p class="lh-copy measure center f6 black-70">
+                This is not what I wanted to happen
+            </p>
+        </article>
+        `);
         console.error(e.message);
     }
 };
