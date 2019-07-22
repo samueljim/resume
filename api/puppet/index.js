@@ -24,10 +24,13 @@ async function getScreenshot(url, type) {
 
 module.exports = async function (req, res) {
     try {
-        const { pathname = '/', query = {} } = parse(req.url, true);
-        const type = query.type;
+        const { query = {} } = parse(req.url, true);
+        const type = (query && query.type) ? query.type : null;
+        const pathname = (query && query.url) ? query.url : null;
+        console.log(type)
+        console.log(pathname)
         const url = getUrlFromPath(pathname);
-        console.log(url)
+        console.log(url);
         if (!isValidUrl(url)) {
             res.statusCode = 400;
             res.setHeader('Content-Type', 'text/html');

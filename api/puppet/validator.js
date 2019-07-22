@@ -5,8 +5,6 @@ function getInt(str) {
 }
 
 function getUrlFromPath(str) {
-    str = str.replace('/api/puppet','');
-    let url = str.slice(1);
     if (!url.startsWith('http')) {
         return 'https://' + url;
     }
