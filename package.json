@@ -19,7 +19,9 @@
     "masonry-layout": "^4.2.2",
     "nodemailer": "^5.1.1",
     "wolfy87-eventemitter": "^5.2.6",
-    "cors":"^2.8.5"
+    "cors":"^2.8.5",
+    "chrome-aws-lambda": "1.18.1",
+    "puppeteer-core": "1.18.1"
   },
   "devDependencies": {
     "pug": "^2.0.3"
