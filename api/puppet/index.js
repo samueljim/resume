@@ -40,7 +40,7 @@ module.exports = async function (req, res) {
     try {
         const { query = {} } = parse(req.url, true);
         const type = (query && query.type) ? query.type : null;
-        const pathname = (query && query.url) ? query.url : null;
+        var pathname = (query && query.url) ? query.url : null;
         if (!pathname.startsWith('http')) {
             pathname = 'https://' + pathname
         }
