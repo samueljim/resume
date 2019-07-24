@@ -1,7 +1,7 @@
 const { parse, URL } = require('url');
 const chrome = require('chrome-aws-lambda');
 const puppeteer = require('puppeteer-core');
-const devices = require('puppeteer/DeviceDescriptors');
+const devices = require('puppeteer-core/DeviceDescriptors');
 
 function isValidUrl(str) {
     try {
@@ -22,6 +22,8 @@ async function getScreenshot(url, query) {
     });
 
     var file;
+    const page = await browser.newPage();
+
     if (query.device) {
         switch (query.device) {
             case 'iphonex':
@@ -51,13 +53,16 @@ async function getScreenshot(url, query) {
             default:
                 break;
         }
-    }
-
-    const page = await browser.newPage();
-    if (query.width || query.height) {
+    } else if (query.width || query.height) {
         await page.setViewport({width: (query.width) ? parseInt(query.width) : 800, height: (query.height) ? parseInt(query.height) : 800});
     }
+    
+    if (query.username && query.password) {
+        await page.authenticate({username:query.username, password:query.password});
+    }
+
     await page.goto(url);
+    
     if (!query.type) {
         file = await page.content();
     } else {
