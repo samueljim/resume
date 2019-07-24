@@ -1,6 +1,7 @@
 const { parse, URL } = require('url');
 const chrome = require('chrome-aws-lambda');
 const puppeteer = require('puppeteer-core');
+const devices = require('puppeteer/DeviceDescriptors');
 
 function isValidUrl(str) {
     try {
@@ -21,6 +22,37 @@ async function getScreenshot(url, query) {
     });
 
     var file;
+    if (query.device) {
+        switch (query.device) {
+            case 'iphonex':
+                await page.emulate(devices['iPhone X']);
+                break;
+            case 'iphone6':
+                await page.emulate(devices['iPhone 6']);
+                break;
+            case 'galaxyS3':
+                await page.emulate(devices['Galaxy S III']);
+                break;
+            case 'ipad':
+                await page.emulate(devices['iPad']);
+                break;
+            case 'nexus5':
+                await page.emulate(devices['Nexus 5']);
+                break;
+            case 'nexus5x':
+                await page.emulate(devices['Nexus 5X']);
+                break;
+            case 'pixel2':
+                await page.emulate(devices['Pixel 2']);
+                break;
+            case 'pixel2xl':
+                await page.emulate(devices['Pixel 2 XL']);
+                break;
+            default:
+                break;
+        }
+    }
+
     const page = await browser.newPage();
     if (query.width || query.height) {
         await page.setViewport({width: (query.width) ? parseInt(query.width) : 800, height: (query.height) ? parseInt(query.height) : 800});
