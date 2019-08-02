@@ -60,7 +60,7 @@ async function getScreenshot(url, query) {
     if (query.username && query.password) {
         await page.authenticate({username:query.username, password:query.password});
     }
-    if (query.waitUntil && (query.waitUntil == 'domcontentloaded' || query.waitUntil == 'networkidle0' || query.waitUntil == 'networkidle2')) {
+    if (query.waituntil && (query.waituntil == 'domcontentloaded' || query.waitUntil == 'networkidle0' || query.waitUntil == 'networkidle2')) {
         await page.goto(url, {waitUntil: query.waitUntil}); 
     } else {
         await page.goto(url);
