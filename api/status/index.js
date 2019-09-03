@@ -42,8 +42,11 @@ async function getStatus(url, query) {
         return headers;
     } else {
         let response = await page.goto(url, {timeout: query.timeout || 5000});
+         
         let headers = response.headers;
         let chain = response.request().redirectChain();
+        console.log(headers);
+        console.log(chain);
         headers.redirectChain = chain;
         headers.url = page.url();
         return headers;
@@ -69,7 +72,8 @@ module.exports = async function (req, res) {
             
                 return res.end(JSON.stringify({error: 'please send a valid url', status: 500}));
             } else {
-                const status = await getStatus(pathname, query);             
+                let status = await getStatus(pathname, query); 
+               
                 res.end(JSON.stringify(status));
                 await browser.close();
             }
