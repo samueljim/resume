@@ -1,6 +1,7 @@
 const { parse, URL } = require('url');
 const chrome = require('chrome-aws-lambda');
 const puppeteer = require('puppeteer-core');
+const path = require('path');
 // const puppeteer = require('puppeteer');
 
 
