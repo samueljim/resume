@@ -32,6 +32,8 @@ async function getStatus(url, query) {
         else
           request.continue();
     });   
+
+    await page._client.send('Page.setDownloadBehavior', {behavior: 'allow', downloadPath: './'})
     
     // page.on('response', response => {
     //     const headers = response.headers;
