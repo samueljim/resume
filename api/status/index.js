@@ -63,11 +63,14 @@ async function getStatus(url, query) {
         let msg = {}
         // let chain = response.request().redirectChain();
         // headers.redirectChain = chain;
+        let chain = response.request().redirectChain();
+        msg.redirectCount = chain.length;
         if (query.noredirects) {
-            let chain = response.request().redirectChain();
-            msg.status = chain[0].status(); 
+            msg.status = chain[0].response.status(); 
             msg.url = chain[0].url(); 
         } else {
+            msg.firstUrl = chain[0].url();
+            msg.firstStatus = chain[0].response.status();
             msg.status = response._status;
             msg.url = page.url();
         }
