@@ -43,13 +43,12 @@ async function getStatus(url, query) {
     } else {
         let response = await page.goto(url, {timeout: query.timeout || 5000});
          
-        let headers = response.headers;
-        let chain = response.request().redirectChain();
-        console.log(headers);
-        console.log(chain);
-        headers.redirectChain = chain;
-        headers.url = page.url();
-        return headers;
+        let msg = {}
+        // let chain = response.request().redirectChain();
+        // headers.redirectChain = chain;
+        msg.status = response._status;
+        msg.url = page.url();
+        return msg;
     }
 }
 
