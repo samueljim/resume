@@ -49,34 +49,31 @@ async function getStatus(url, query) {
 
 
 module.exports = async function (req, res) {
+    res.setHeader('Content-Type', 'application/json');
+    res.statusCode = 200;
     try {
         const { query = {} } = parse(req.url, true);
         const type = (query && query.type) ? query.type : null;
         var pathname = (query && query.url) ? query.url : null;
         if (!pathname) {
-            res.statusCode = 200;
-            res.setHeader('Content-Type', 'application/json');
-            return res.end({error: 'please send a url', status: 500});
+            return res.end(JSON.stringify(({error: 'please send a url', status: 500}));
         } else {
             if (!pathname.startsWith('http')) {
                 pathname = 'https://' + pathname
             }
             if (!isValidUrl(pathname)) {
                 res.statusCode = 200;
-                res.setHeader('Content-Type', 'application/json');
-                return res.end({error: 'please send a valid url', status: 500});
+            
+                return res.end((JSON.stringify({error: 'please send a valid url', status: 500}));
             } else {
-                const status = await getStatus(pathname, query);
-                res.statusCode = 200;
-                res.setHeader('Content-Type', 'application/json');
-                res.end(status);
+                const status = await getStatus(pathname, query);             
+                res.end(JSON.stringify((status));
                 await browser.close();
             }
         }
     } catch (e) {
-        res.statusCode = 200;
+        res.statusCode = 500;
         console.error(e.message);
-        res.setHeader('Content-Type', 'application/json');
-        return res.end({error: e, status: 500});
+        return res.end((JSON.stringify({error: e.message, status: 500}));
     }
 };
