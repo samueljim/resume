@@ -35,16 +35,19 @@ async function getStatus(url, query) {
     
     if (query.waituntil && (query.waituntil == 'domcontentloaded' || query.waitUntil == 'networkidle0' || query.waitUntil == 'networkidle2')) {
         let response = await page.goto(url, {waitUntil: query.waitUntil, timeout: query.timeout || 5000}); 
+        let headers = response.headers;
+        let chain = response.request().redirectChain();
+        headers.redirectChain = chain;
+        headers.url = page.url();
+        return headers;
     } else {
         let response = await page.goto(url, {timeout: query.timeout || 5000});
+        let headers = response.headers;
+        let chain = response.request().redirectChain();
+        headers.redirectChain = chain;
+        headers.url = page.url();
+        return headers;
     }
-    
-
-    let headers = response.headers;
-    let chain = response.request().redirectChain();
-    headers.redirectChain = chain;
-    headers.url = page.url();
-    return headers;
 }
 
 
