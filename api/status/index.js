@@ -33,8 +33,8 @@ async function getStatus(url, query) {
           request.continue();
     });   
 
-    await page._client.send('Page.setDownloadBehavior', {behavior: 'allow', downloadPath: './'})
-    
+    await page._client.send('Page.setDownloadBehavior', {behavior: 'allow', downloadPath: path.resolve(__dirname,'tmp')});
+
     // page.on('response', response => {
     //     const headers = response.headers;
     //     if (response.url.endsWith('.pdf'))
@@ -56,8 +56,6 @@ async function getStatus(url, query) {
     } else {
         let response = await page.goto(url, {timeout: (query.timeout) ? query.timeout : 10000});
          
-
-
         let msg = {}
         let chain = response.request().redirectChain();
         msg.redirectCount = chain.length;
@@ -75,7 +73,7 @@ async function getStatus(url, query) {
             msg.firstUrl = page.url()
             msg.firstStatus = response._status;
         }
-        msg.status = response._status;
+        msg.status = response.status();
         msg.url = page.url();
         return msg;
     }
