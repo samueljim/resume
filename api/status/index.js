@@ -56,7 +56,7 @@ module.exports = async function (req, res) {
         const type = (query && query.type) ? query.type : null;
         var pathname = (query && query.url) ? query.url : null;
         if (!pathname) {
-            return res.end(JSON.stringify(({error: 'please send a url', status: 500}));
+            return res.end(JSON.stringify({error: 'please send a url', status: 500}));
         } else {
             if (!pathname.startsWith('http')) {
                 pathname = 'https://' + pathname
@@ -64,16 +64,16 @@ module.exports = async function (req, res) {
             if (!isValidUrl(pathname)) {
                 res.statusCode = 200;
             
-                return res.end((JSON.stringify({error: 'please send a valid url', status: 500}));
+                return res.end(JSON.stringify({error: 'please send a valid url', status: 500}));
             } else {
                 const status = await getStatus(pathname, query);             
-                res.end(JSON.stringify((status));
+                res.end(JSON.stringify(status));
                 await browser.close();
             }
         }
     } catch (e) {
         res.statusCode = 500;
         console.error(e.message);
-        return res.end((JSON.stringify({error: e.message, status: 500}));
+        return res.end(JSON.stringify({error: e.message, status: 500}));
     }
 };
