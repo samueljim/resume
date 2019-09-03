@@ -33,12 +33,12 @@ async function getStatus(url, query) {
           request.continue();
     });   
     
-    page.on('response', response => {
-        const headers = response.headers;
-        if (response.url.endsWith('.pdf'))
-          headers['Content-Disposition'] = 'attachment';
-        response.continue({headers});
-      });
+    // page.on('response', response => {
+    //     const headers = response.headers;
+    //     if (response.url.endsWith('.pdf'))
+    //       headers['Content-Disposition'] = 'attachment';
+    //     response.continue({headers});
+    //   });
 
     if (query.username && query.password) {
         await page.authenticate({username:query.username, password:query.password});
