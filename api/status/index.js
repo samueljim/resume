@@ -25,6 +25,8 @@ async function getStatus(url, query) {
     page.on('request', request => {
         if (request.resourceType() === 'stylesheet' || request.resourceType() === 'image')
           request.abort();
+        else if (query.stopRedirects && request.isNavigationRequest() && request.redirectChain().length !== 0)
+            request.abort();
         else
           request.continue();
     });   
