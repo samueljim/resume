@@ -1,6 +1,8 @@
 const { parse, URL } = require('url');
 const chrome = require('chrome-aws-lambda');
 const puppeteer = require('puppeteer-core');
+// const puppeteer = require('puppeteer');
+
 
 function isValidUrl(str) {
     try {
@@ -14,6 +16,7 @@ function isValidUrl(str) {
 
 var browser;
 async function getStatus(url, query) {
+    chrome.args.push('--profile-directory="Default"')
     browser = await puppeteer.launch({
         args: chrome.args,
         executablePath: await chrome.executablePath,
@@ -35,14 +38,14 @@ async function getStatus(url, query) {
     }
     
     if (query.waituntil && (query.waituntil == 'domcontentloaded' || query.waitUntil == 'networkidle0' || query.waitUntil == 'networkidle2')) {
-        let response = await page.goto(url, {waitUntil: query.waitUntil, timeout: query.timeout || 5000}); 
+        let response = await page.goto(url, {waitUntil: query.waitUntil, timeout: query.timeout || 10000}); 
         let headers = response.headers;
         let chain = response.request().redirectChain();
         headers.redirectChain = chain;
         headers.url = page.url();
         return headers;
     } else {
-        let response = await page.goto(url, {timeout: query.timeout || 5000});
+        let response = await page.goto(url, {timeout: (query.timeout) ? int(query.timeout) : 10000});
          
         let msg = {}
         let chain = response.request().redirectChain();
@@ -54,8 +57,13 @@ async function getStatus(url, query) {
                 status: chain[i].response().status()
             })
         }
-        msg.firstUrl = chain[0].url();
-        msg.firstStatus = chain[0].response().status();
+        if (chain[0]) {
+            msg.firstUrl = chain[0].url();
+            msg.firstStatus = chain[0].response().status();
+        } else {
+            msg.firstUrl = page.url()
+            msg.firstStatus = response._status;
+        }
         msg.status = response._status;
         msg.url = page.url();
         return msg;
