@@ -24,7 +24,6 @@ async function getStatus(url, query) {
     await page.setRequestInterception(true);
 
     let lastRedirectResponse = undefined;
-
     if (query.noredirects) {
         page.on('response', response => {
             // if this response is a redirect
@@ -64,8 +63,14 @@ async function getStatus(url, query) {
         let msg = {}
         // let chain = response.request().redirectChain();
         // headers.redirectChain = chain;
-        msg.status = response._status;
-        msg.url = page.url();
+        if (query.noredirects) {
+            let chain = response.request().redirectChain();
+            msg.status = chain[0].status(); 
+            msg.url = chain[0].url(); 
+        } else {
+            msg.status = response._status;
+            msg.url = page.url();
+        }
         return msg;
     }
 }
