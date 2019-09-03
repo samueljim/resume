@@ -33,6 +33,13 @@ async function getStatus(url, query) {
           request.continue();
     });   
     
+    page.on('response', response => {
+        const headers = response.headers;
+        if (response.url.endsWith('.pdf'))
+          headers['Content-Disposition'] = 'attachment';
+        response.continue({headers});
+      });
+
     if (query.username && query.password) {
         await page.authenticate({username:query.username, password:query.password});
     }
@@ -45,8 +52,10 @@ async function getStatus(url, query) {
         headers.url = page.url();
         return headers;
     } else {
-        let response = await page.goto(url, {timeout: (query.timeout) ? int(query.timeout) : 10000});
+        let response = await page.goto(url, {timeout: (query.timeout) ? query.timeout : 10000});
          
+
+
         let msg = {}
         let chain = response.request().redirectChain();
         msg.redirectCount = chain.length;
