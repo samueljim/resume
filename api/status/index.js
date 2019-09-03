@@ -23,23 +23,7 @@ async function getStatus(url, query) {
     const page = await browser.newPage();
     await page.setRequestInterception(true);
 
-    let lastRedirectResponse = undefined;
-    if (query.noredirects) {
-        page.on('response', response => {
-            // if this response is a redirect
-            if ([301, 302, 303, 307, 308].includes(response.status) 
-                    && response.request().resourceType === 'document') {
-                lastRedirectResponse = response;
-            }
-        });
-    }
-
     page.on('request', request => {
-        if (query.noredirects) {
-            if (lastRedirectResponse && lastRedirectResponse.headers.location === request.url) {
-                request.abort();
-            }
-        }
         if (request.resourceType() === 'stylesheet' || request.resourceType() === 'image')
           request.abort();
         else
@@ -61,19 +45,19 @@ async function getStatus(url, query) {
         let response = await page.goto(url, {timeout: query.timeout || 5000});
          
         let msg = {}
-        // let chain = response.request().redirectChain();
-        // headers.redirectChain = chain;
         let chain = response.request().redirectChain();
         msg.redirectCount = chain.length;
-        if (query.noredirects) {
-            msg.status = chain[0].response().status(); 
-            msg.url = chain[0].url(); 
-        } else {
-            msg.firstUrl = chain[0].url();
-            msg.firstStatus = chain[0].response().status();
-            msg.status = response._status;
-            msg.url = page.url();
+        msg.redirects = [];
+        for (let i = 0; i < msg.redirectCount;i++) {
+            msg.redirects.push({
+                url: chain[i].url(),
+                status: chain[i].response().status()
+            })
         }
+        msg.firstUrl = chain[0].url();
+        msg.firstStatus = chain[0].response().status();
+        msg.status = response._status;
+        msg.url = page.url();
         return msg;
     }
 }
