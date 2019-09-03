@@ -23,7 +23,7 @@ async function getStatus(url, query) {
     const page = await browser.newPage();
     await page.setRequestInterception(true);
     page.on('request', request => {
-        if (req.resourceType() === 'stylesheet' || request.resourceType() === 'image')
+        if (request.resourceType() === 'stylesheet' || request.resourceType() === 'image')
           request.abort();
         else
           request.continue();
