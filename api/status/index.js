@@ -21,16 +21,25 @@ async function getStatus(url, query) {
     });
     var file;
     const page = await browser.newPage();
+    await page.setRequestInterception(true);
+    page.on('request', request => {
+        if (req.resourceType() === 'stylesheet' || request.resourceType() === 'image')
+          request.abort();
+        else
+          request.continue();
+    });   
     
     if (query.username && query.password) {
         await page.authenticate({username:query.username, password:query.password});
     }
     
     if (query.waituntil && (query.waituntil == 'domcontentloaded' || query.waitUntil == 'networkidle0' || query.waitUntil == 'networkidle2')) {
-        let response = await page.goto(url, {waitUntil: query.waitUntil}); 
+        let response = await page.goto(url, {waitUntil: query.waitUntil, timeout: query.timeout || 5000}); 
     } else {
-        let response = await page.goto(url);
+        let response = await page.goto(url, {timeout: query.timeout || 5000});
     }
+    
+
     let headers = response.headers;
     let chain = response.request().redirectChain();
     headers.redirectChain = chain;
@@ -56,7 +65,6 @@ module.exports = async function (req, res) {
                 res.statusCode = 200;
                 res.setHeader('Content-Type', 'application/json');
                 return res.end({error: 'please send a valid url', status: 500});
-                `);
             } else {
                 const status = await getStatus(pathname, query);
                 res.statusCode = 200;
