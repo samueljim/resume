@@ -22,11 +22,27 @@ async function getStatus(url, query) {
     var file;
     const page = await browser.newPage();
     await page.setRequestInterception(true);
+
+    let lastRedirectResponse = undefined;
+
+    if (query.noredirects) {
+        page.on('response', response => {
+            // if this response is a redirect
+            if ([301, 302, 303, 307, 308].includes(response.status) 
+                    && response.request().resourceType === 'document') {
+                lastRedirectResponse = response;
+            }
+        });
+    }
+
     page.on('request', request => {
+        if (query.noredirects) {
+            if (lastRedirectResponse && lastRedirectResponse.headers.location === request.url) {
+                request.abort();
+            }
+        }
         if (request.resourceType() === 'stylesheet' || request.resourceType() === 'image')
           request.abort();
-        else if (query.noredirects && request.isNavigationRequest() && request.redirectChain().length !== 0)
-            request.abort();
         else
           request.continue();
     });   
