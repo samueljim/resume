@@ -399,5 +399,7 @@
 		 	printLetters(i + 1)
 		}, delay);
 	}
-	$('.menu-toggle').click()
+	if ($(window).width() > 1000) {
+		$('.menu-toggle').click()
+	}
 })(jQuery);
