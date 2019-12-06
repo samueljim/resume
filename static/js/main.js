@@ -399,4 +399,5 @@
 		 	printLetters(i + 1)
 		}, delay);
 	}
+	$('.menu-toggle').click()
 })(jQuery);
