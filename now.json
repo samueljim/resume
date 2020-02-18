@@ -6,7 +6,7 @@
     "github": {
         "autoAlias": true
     },
-    "regions": ["all"],
+    "regions": ["syd1"],
     "builds": [
         { "src": "api/**", "use": "@now/node", "config": { "maxLambdaSize": "50mb" } },
         { "src": "static/**", "use": "@now/static" },
