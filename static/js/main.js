@@ -225,61 +225,61 @@
 	------------------------------------------------------ */
 
 	/* local validation */
-	$('#contactForm').validate({
+	// $('#contactForm').validate({
 
-		/* submit via ajax */
-		submitHandler: function (form) {
+	// 	/* submit via ajax */
+	// 	submitHandler: function (form) {
 
-			var sLoader = $('#submit-loader');
-			// $('#message-warning').fadeOut();
+	// 		var sLoader = $('#submit-loader');
+	// 		// $('#message-warning').fadeOut();
 
-			$.ajax({
+	// 		$.ajax({
 
-				type: "POST",
-				url: "/api/email",
-				data: $(form).serialize(),
-				beforeSend: function () {
-					$('.submitform').prop('disabled', true);
-					sLoader.fadeIn();
-				},
-				success: function (msg) {
+	// 			type: "POST",
+	// 			url: "/api/email",
+	// 			data: $(form).serialize(),
+	// 			beforeSend: function () {
+	// 				$('.submitform').prop('disabled', true);
+	// 				sLoader.fadeIn();
+	// 			},
+	// 			success: function (msg) {
 
-					// Message was sent
-					if (msg == 'OK') {
-						sLoader.fadeOut();
-						$('#message-warning').hide();
-						$('#contactForm').fadeOut();
-						$('#message-success').fadeIn();
-						$('#thanks').fadeIn();
-						$(form)[0].reset();
-					}
-					// There was an error
-					else {
-						sLoader.fadeOut();
-						$('#contactForm').fadeOut();
-						$('#message-success').html(msg);
-						$('#message-success').fadeIn();
-						$('#thanks').fadeIn();
-						$(form)[0].reset();
-					}
+	// 				// Message was sent
+	// 				if (msg == 'OK') {
+	// 					sLoader.fadeOut();
+	// 					$('#message-warning').hide();
+	// 					$('#contactForm').fadeOut();
+	// 					$('#message-success').fadeIn();
+	// 					$('#thanks').fadeIn();
+	// 					$(form)[0].reset();
+	// 				}
+	// 				// There was an error
+	// 				else {
+	// 					sLoader.fadeOut();
+	// 					$('#contactForm').fadeOut();
+	// 					$('#message-success').html(msg);
+	// 					$('#message-success').fadeIn();
+	// 					$('#thanks').fadeIn();
+	// 					$(form)[0].reset();
+	// 				}
 
-				},
-				error: function (msg) {
+	// 			},
+	// 			error: function (msg) {
 
-					if (msg == 'OK') {
-						$('#message-warning').html("Something went wrong. Please try again.");
-					} else {
-						$('#message-warning').html(msg.responseText || "Something went wrong. Please send an email directly so I can fix this.");
-					}
-					$('.submitform').prop('disabled', false);
-					sLoader.fadeOut();
-					$('#message-warning').fadeIn();
-				}
+	// 				if (msg == 'OK') {
+	// 					$('#message-warning').html("Something went wrong. Please try again.");
+	// 				} else {
+	// 					$('#message-warning').html(msg.responseText || "Something went wrong. Please send an email directly so I can fix this.");
+	// 				}
+	// 				$('.submitform').prop('disabled', false);
+	// 				sLoader.fadeOut();
+	// 				$('#message-warning').fadeIn();
+	// 			}
 
-			});
-		}
+	// 		});
+	// 	}
 
-	});
+	// });
 	/*---------------------------------------------------- */
 	/*	Easter egg
 	------------------------------------------------------ */

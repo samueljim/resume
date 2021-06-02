@@ -19,9 +19,5 @@
         { "src": "/", "dest": "/views/index.html" },
         { "src": "/blog", "dest": "/views/blog.html" },
         { "src": "/(.*)", "dest": "static/$1" }
-    ],
-    "env": {
-        "USER_EMAIL": "sam.job.inquiries@gmail.com",
-        "PASSWORD_EMAIL": "@email-password"
-    }
+    ]
 }
