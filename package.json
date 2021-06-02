@@ -18,7 +18,7 @@
     "express-recaptcha": "^4.1.1",
     "express-validator": "^5.3.1",
     "image-to-ascii": "^3.0.13",
-    "jquery": "^3.4.0",
+    "jquery": "^3.5.0",
     "masonry-layout": "^4.2.2",
     "puppeteer": "^1.19.0",
     "puppeteer-core": "1.18.1",
