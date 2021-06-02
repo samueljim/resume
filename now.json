@@ -15,6 +15,7 @@
     "routes": [
         { "src": "/api/(.*)", "dest": "/api/$1" },
         { "src": "/puppet/(.*)", "dest": "/api/puppet/$1" },
+        { "src": "/ascii(.*)", "dest": "/api/ascii/$1" },
         { "src": "/", "dest": "/views/index.html" },
         { "src": "/blog", "dest": "/views/blog.html" },
         { "src": "/(.*)", "dest": "static/$1" }
